@@ -5,11 +5,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from './db/data.source';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
+import { ReservationModule } from './reservation/reservation.module';
+import { ConvertModule } from './convert/convert.module';
 
 const DbModule = TypeOrmModule.forRoot(dataSourceOptions);
 
 @Module({
-  imports: [ConfigModule.forRoot(), DbModule, UserModule],
+  imports: [
+    ConfigModule.forRoot(),
+    DbModule,
+    UserModule,
+    ReservationModule,
+    ConvertModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

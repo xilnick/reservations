@@ -9,8 +9,8 @@ export const dataSourceOptions: DataSourceOptions = {
   database: process.env.DB_NAME,
   synchronize: false,
   logging: false,
-  entities: ['src/**/*.entity.ts'],
-  migrations: ['src/db/migrations/**/*.ts'],
+  entities: [__dirname + '/src/**/*.entity.ts'],
+  migrations: [__dirname + '/src/db/migrations/**/*.ts'],
 };
 
 const dataSource = new DataSource(dataSourceOptions);
