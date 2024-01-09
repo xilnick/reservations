@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { ReservationModule } from './reservation/reservation.module';
 import { ConvertModule } from './convert/convert.module';
+import { AuthModule } from './auth/auth.module';
 
 const DbModule = TypeOrmModule.forRoot(dataSourceOptions);
 
@@ -17,6 +18,7 @@ const DbModule = TypeOrmModule.forRoot(dataSourceOptions);
     UserModule,
     ReservationModule,
     ConvertModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

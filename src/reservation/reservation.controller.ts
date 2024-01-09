@@ -1,11 +1,13 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ReservationService } from './reservation.service';
 import { ReservationWithAmenityDTO } from './reservationWithAmenity.dto';
+import { Public } from '../auth/decorators/public.decorator';
 
 @Controller('reservations')
 export class ReservationController {
   constructor(private readonly reservationService: ReservationService) {}
 
+  @Public()
   @Get('')
   async getReservationsWithAmenityByTime(
     @Query('amenityId') amenityId: number,
