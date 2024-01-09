@@ -1,6 +1,21 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
+import { ReservationService } from '../reservation/reservation.service';
 
 @Controller('user')
 export class UserController {
+  constructor(private reservationService: ReservationService) {}
 
+  @Get(':id/reservations-by-day')
+  async getUserReservationsDayGrouped(@Param('id') id: number) {
+    const reservations = await this.reservationService.findUserReservations(id);
+
+    return reservations.reduce((acc, reservation) => {
+      const day = reservation.startTime.toDateString();
+      if (!acc[day]) {
+        acc[day] = [];
+      }
+      acc[day].push(reservation);
+      return acc;
+    }, {});
+  }
 }

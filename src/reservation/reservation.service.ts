@@ -31,4 +31,8 @@ export class ReservationService {
       },
     });
   }
+
+  async findUserReservations(id: number): Promise<Reservation[]> {
+    return this.reservationRepository.findBy({ userId: id });
+  }
 }
